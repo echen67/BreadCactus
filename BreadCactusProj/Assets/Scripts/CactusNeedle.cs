@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CactusNeedle : MonoBehaviour {
 
+    public int damage = -10;
     private int timer = 0;
 
 	void Update () {
@@ -13,4 +14,14 @@ public class CactusNeedle : MonoBehaviour {
         }
         timer++;
 	}
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.tag == "Enemy")
+        {
+            EnemyHealth enemyScript = coll.GetComponent<EnemyHealth>();
+            enemyScript.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+    }
 }

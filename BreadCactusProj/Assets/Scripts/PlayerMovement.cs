@@ -80,7 +80,7 @@ public abstract class PlayerMovement : MonoBehaviour {
         //Debug.DrawLine(transform.position, end, Color.red);
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastLength);
-        if (hit.collider != null && hit.collider.tag == "Platforms")
+        if (hit.collider != null && (hit.collider.tag == "Platforms" || hit.collider.tag == "Player"))
         {
             grounded = true;
         }
