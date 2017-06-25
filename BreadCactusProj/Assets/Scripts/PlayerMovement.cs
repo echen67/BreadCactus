@@ -30,10 +30,15 @@ public abstract class PlayerMovement : MonoBehaviour {
 		raycastLength = input;
 	}
 
-    private bool currentDirection = false;  //left is false, right is true
-    private bool newDirection = false;
+    private bool currentDirection;  //left is false, right is true
+    private bool newDirection = true;
 
     private Rigidbody2D rbody;
+
+    public bool getCurrentDirection()
+    {
+        return newDirection;
+    }
 
     void Awake () {
 //		if (playerType == PlayerType.Bread)
@@ -62,6 +67,8 @@ public abstract class PlayerMovement : MonoBehaviour {
             transform.Rotate(new Vector3(0, -180, 0));
             currentDirection = newDirection;
         }
+
+        //Debug.Log(newDirection);
 
         Walk();
         Jump();
